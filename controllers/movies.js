@@ -58,13 +58,12 @@ module.exports.addMovie = (req, res, next) => {
 };
 
 module.exports.deleteMovie = (req, res, next) => Movie.findById(req.params.movieId)
-  // eslint-disable-next-line consistent-return
   .then((movie) => {
     const userId = req.user._id;
     if (!movie) {
-      return next(new NotFound(`Фильм с указанным id: ${req.params.movieId} не найден`));
+      next(new NotFound(`Фильм с указанным id: ${req.params.movieId} не найден`));
     } if (!movie.owner.equals(userId)) {
-      return next(new Forbidden('Попытка удалить чужой фильм!'));
+      next(new Forbidden('Попытка удалить чужой фильм!'));
     } Movie.deleteOne(movie)
       .then(() => res.status(STATUS_OK).send(movie));
   })

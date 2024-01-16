@@ -84,6 +84,10 @@ module.exports.updateUserInfo = (req, res, next) => {
     .catch((err) => {
       if (err instanceof CastError) {
         next(new BadRequest('Переданы некорректные данные'));
-      } next(err);
+      } else if (err.code === 11000) {
+        next(new ConflictingRequest('Пользователь с таким email уже существует'));
+      } else {
+        next(err);
+      }
     });
 };

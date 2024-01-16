@@ -17,14 +17,7 @@
     "no-console": "off",
     "linebreak-style": 0,
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allow": [
-          "_id"
-        ]
-      }
-    ]
+    "no-underscore-dangle": "off"
   }
 }
 
