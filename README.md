@@ -1,7 +1,7 @@
 # movies-explorer-api
 Репозиторий для приложения проекта `Mesto`, содержащий бэкенд часть приложения.
 
-Адрес репозитория: https://github.com/Zhuuravel/react-mesto-api-full-gha/
+Адрес репозитория: https://github.com/Zhuuravel/movies-explorer-api/
 
 ## Ссылка на проект
 
