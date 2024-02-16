@@ -37,7 +37,7 @@ app.use(cors);
 
 app.use(routes);
 
-app.use('*', (req, res, next) => next(new NotFound('Неверный путь')));
+app.use('*', (req, res, next) => next(new NotFound('Страница по указанному маршруту не найдена.')));
 
 app.use(errorLogger);
 
