@@ -30,9 +30,9 @@ module.exports.registration = (req, res, next) => {
     }))
       .catch((error) => {
         if (error instanceof ValidationError) {
-          next(new BadRequest('Переданы некорректные данные при создании пользователя'));
+          next(new BadRequest('При регистрации пользователя произошла ошибка.'));
         } else if (error.code === 11000) {
-          next(new ConflictingRequest('Пользователь уже существует'));
+          next(new ConflictingRequest('Пользователь с таким email уже существует.'));
         } else {
           next(error);
         }
@@ -53,7 +53,7 @@ module.exports.login = (req, res, next) => {
     })
     .catch((err) => {
       if (err instanceof ValidationError) {
-        next(new BadRequest('Переданы некорректные данные при входе пользователя'));
+        next(new BadRequest('Вы ввели неправильный логин или пароль.'));
       } next(err);
     });
 };
@@ -83,9 +83,9 @@ module.exports.updateUserInfo = (req, res, next) => {
     .then((user) => res.status(STATUS_OK).send(user))
     .catch((err) => {
       if (err instanceof CastError) {
-        next(new BadRequest('Переданы некорректные данные'));
+        next(new BadRequest('При обновлении профиля произошла ошибка.'));
       } else if (err.code === 11000) {
-        next(new ConflictingRequest('Пользователь с таким email уже существует'));
+        next(new ConflictingRequest('Пользователь с таким email уже существует.'));
       } else {
         next(err);
       }
